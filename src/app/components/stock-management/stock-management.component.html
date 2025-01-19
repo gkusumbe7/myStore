@@ -1,1 +1,93 @@
-<h1>Stock Mangement App</h1>
+<div class="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="text-2xl py-4 px-6 bg-green-500 text-white text-center font-bold uppercase">
+        Book an Appointment
+    </div>
+    <form class="py-4 px-6" action="" method="POST">
+        
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="name">
+                Item Name
+            </label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="name" type="text" placeholder="Enter Item name">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="category">
+                Category
+            </label>
+            <select
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="category" name="category">
+                <option value="">Select a Category</option>
+                <option value="fruitsVegetables">Fruits & Vegetables </option>
+                <option value="pantryStaples">Pantry Staples</option>
+                <option value="dairy">Dairy Products</option>
+                <option value="bakeryBread">Bakery & Bread</option>
+                <option value="cersonalCare">Personal Care</option>
+            </select>
+        </div>
+        <!-- <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="email">
+                Email
+            </label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="email" type="email" placeholder="Enter your email">
+        </div> -->
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="price">
+                Price
+            </label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="price" type="tel" placeholder="Enter item price">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="quantity">
+                Quantity
+            </label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="quantity" type="quantity" placeholder="Enter a quantity">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="time">
+                Time
+            </label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="time" type="time" placeholder="Select a time">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="service">
+                Service
+            </label>
+            <select
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="service" name="service">
+                <option value="">Select a service</option>
+                <option value="haircut">Haircut</option>
+                <option value="coloring">Coloring</option>
+                <option value="styling">Styling</option>
+                <option value="facial">Facial</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="message">
+                Message
+            </label>
+            <textarea
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="message" rows="4" placeholder="Enter any additional information"></textarea>
+        </div>
+        <div class="flex items-center justify-center mb-4">
+            <button
+                class="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
+                type="submit">
+                Book Appointment
+            </button>
+        </div>
+
+    </form>
+</div>
