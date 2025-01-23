@@ -7,7 +7,7 @@ import { StockListComponent } from './components/stock-list/stock-list.component
 import { StockManagementComponent } from './components/stock-management/stock-management.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { HeaderComponent } from './components/header/header.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,11 +16,12 @@ import { HeaderComponent } from './components/header/header.component';
     StockManagementComponent,
     ReportsComponent,
     HeaderComponent,
-    StockListComponent
+    StockListComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
