@@ -1,60 +1,289 @@
-<div class="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
-    <div class="text-2xl py-4 px-6 bg-green-500 text-white text-center font-bold uppercase">
-        ADD PRODUCT
+<div class="">
+  <!-- TWO BUTTON  -->
+  <div>
+    <button
+      (click)="showAddProductorProductEntry('addProductEntry')"
+      class="p-2 text-white  font-semibold bg-green-500 rounded-xl m-2"
+    >
+      ADD PRODUCT
+    </button>
+    <button
+      (click)="showAddProductorProductEntry('addProductionEntry')"
+      class="p-2 text-white font-semibold  bg-orange-400 rounded-xl m-2"
+    >
+      ADD PRODUCT ENTRY
+    </button>
+  </div>
+
+  <!-- ADD PRODUCT -->
+  <div
+    *ngIf="activeEntry === 'addProductEntry'"
+    class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+  >
+    <div
+      class="text-2xl py-4 px-6 bg-green-500 text-white text-center font-bold uppercase"
+    >
+      ADD PRODUCT
     </div>
-    <form class="py-4 px-6" [formGroup]= "saveProductDetails" (ngSubmit)="saveProduct()" >
-        
-        <div class="mb-4  h-20">
-            <label class="block text-gray-700 font-bold mb-2" for="name">
-                Product Name
-            </label>
-            <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="name" formControlName="name" type="text" placeholder="Enter Item name">
-            <div class="mb-4" *ngIf="saveProductDetails.get('name')?.invalid  && saveProductDetails.get('name')?.touched">
-                <p class="text-red-600 text-sm" *ngIf="saveProductDetails.get('name')?.errors?.['required']">Name is required.</p>
-            </div>
+    <form
+      class="py-4 px-6"
+      [formGroup]="saveProductDetails"
+      (ngSubmit)="saveProduct()"
+    >
+      <div class="mb-4 h-20">
+        <label class="block text-gray-700 font-bold mb-2" for="name">
+          Product Name
+        </label>
+        <input
+          class="shadow appearance-none border  hover:border-green-400  rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="name"
+          formControlName="name"
+          type="text"
+          placeholder="Enter Item name"
+        />
+        <div
+          class="mb-4"
+          *ngIf="
+            saveProductDetails.get('name')?.invalid &&
+            saveProductDetails.get('name')?.touched
+          "
+        >
+          <p
+            class="text-red-600 text-sm"
+            *ngIf="saveProductDetails.get('name')?.errors?.['required']"
+          >
+            Name is required.
+          </p>
         </div>
+      </div>
 
-        <div class="mb-4  h-20">
-            <label class="block text-gray-700 font-bold mb-2" for="category">
-                Category
-            </label>
-            <select
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="category" formArrayName="category" >
-                <option value="">Select a Category</option>
-                <option value="" *ngFor="let category of categoryies"  value="category"> 
-                    {{category}}
-                </option>   
-            </select>
+      <div class="mb-4 h-20">
+        <label class="block text-gray-700 font-bold mb-2" for="category">
+          Category
+        </label>
+        <select
+          class="shadow appearance-none border hover:border-green-400  rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="category"
+          formControlName="category"
+        >
+          <option value="" disabled>Select a Category</option>
+          <option *ngFor="let category of categoryies" [value]="category">
+            {{ category }}
+          </option>
+        </select>
+        <div>
+          <div
+            class="mb-4"
+            *ngIf="
+              saveProductDetails.get('category')?.invalid &&
+              saveProductDetails.get('category')?.touched
+            "
+          >
+            <p
+              class="text-red-600 text-sm"
+              *ngIf="saveProductDetails.get('category')?.errors?.['required']"
+            >
+              Category is required.
+            </p>
+          </div>
         </div>
+      </div>
 
-        <div class="mb-4  h-20">
-            <label class="block text-gray-700 font-bold mb-2" for="price">
-                Price
-            </label>
-            <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="price" type="tel"formControlName="price" placeholder="Enter item price">
+      <div class="mb-4 h-20">
+        <label class="block text-gray-700 font-bold mb-2" for="price">
+          Price
+        </label>
+        <input
+          class="shadow appearance-none border hover:border-green-400  rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="price"
+          type="tel"
+          formControlName="price"
+          placeholder="Enter item price"
+        />
+        <div>
+          <div
+            class="mb-4"
+            *ngIf="
+              saveProductDetails.get('price')?.invalid &&
+              saveProductDetails.get('price')?.touched
+            "
+          >
+            <p
+              class="text-red-600 text-sm"
+              *ngIf="saveProductDetails.get('price')?.errors?.['required']"
+            >
+              Price is required.
+            </p>
+          </div>
         </div>
+      </div>
 
-        <div class="mb-4  h-20">
-            <label class="block text-gray-700 font-bold mb-2" for="quantity">
-                Stock
-            </label>
-            <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                formControlName="quantity"  id="quantity" type="quantity" placeholder="Enter a quantity">
+      <div class="mb-4 h-20">
+        <label class="block text-gray-700 font-bold mb-2" for="quantity">
+          Quantity
+        </label>
+        <input
+          class="shadow appearance-none border hover:border-green-400  rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          formControlName="quantity"
+          id="quantity"
+          type="quantity"
+          placeholder="Enter a quantity"
+        />
+        <div>
+          <div
+            class="mb-4"
+            *ngIf="
+              saveProductDetails.get('quantity')?.invalid &&
+              saveProductDetails.get('quantity')?.touched
+            "
+          >
+            <p
+              class="text-red-600 text-sm"
+              *ngIf="saveProductDetails.get('quantity')?.errors?.['required']"
+            >
+              Quantity is required.
+            </p>
+          </div>
         </div>
+      </div>
 
-        <div class="flex items-center justify-center mb-4">
-            <button
-                class="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
-                type="submit">
-                Save
-            </button>
-        </div>
-
+      <div class="flex items-center justify-center mb-1">
+        <button
+          class="bg-gray-900 text-white py-1 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
+          type="submit"
+        >
+          Save
+        </button>
+      </div>
     </form>
+  </div>
+<!-- ADD PRODUCTION ENTRY  -->
+  <div
+    *ngIf="activeEntry === 'addProductionEntry'"
+    class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+  >
+    <div
+      class="text-2xl py-4 px-6 bg-orange-400 text-white text-center font-bold uppercase"
+    >
+      ADD PRODUCTION ENTRY
+    </div>
+    <form
+      class="py-4 px-6"
+      [formGroup]="addProductsEntry"
+      (ngSubmit)="addProductEntry()"
+    >
+
+      <div class="mb-4 h-20">
+        <label class="block text-gray-700 font-bold mb-2" for="category">
+          Select Category
+        </label>
+        <select
+          class="shadow appearance-none border hover:border-orange-400  rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="itemCategory" 
+          formControlName="itemCategory"
+          
+        >
+          <option value="" disabled selected>Select a Category</option>
+          <option *ngFor="let category of categoryies" [value]="">
+            {{ category }}
+          </option>
+        </select>
+        <div>
+          <div
+            class="mb-4"
+            *ngIf="
+              saveProductDetails.get('itemCategory')?.invalid &&
+              saveProductDetails.get('itemCategory')?.touched
+            "
+          >
+            <p
+              class="text-red-600 text-sm"
+              *ngIf="addProductsEntry.get('itemCategory')?.errors?.['required']"
+            >
+              Category is required.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mb-4 h-20">
+        <label class="block text-gray-700 font-bold mb-2" for="category">
+          Select Item Name 
+        </label>
+        <select
+          class="shadow appearance-none border hover:border-orange-400  rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="itemCategory" 
+          formControlName="itemCategory"
+          
+        >
+          <option value="" disabled selected>Select Item Name</option>
+          <option *ngFor="let category of categoryies" [value]="">
+            {{ category }}
+          </option>
+        </select>
+        <div>
+          <div
+            class="mb-4"
+            *ngIf="
+              saveProductDetails.get('itemCategory')?.invalid &&
+              saveProductDetails.get('itemCategory')?.touched
+            "
+          >
+            <p
+              class="text-red-600 text-sm"
+              *ngIf="addProductsEntry.get('itemCategory')?.errors?.['required']"
+            >
+              Category is required.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="mb-4 h-20 flex gap-10 ">
+
+        <div class="">
+            <div class="flex flex-col">
+                <label class=" text-gray-700 font-bold mb-2 " for="name">
+                        Item Price 
+                </label>
+                <input
+                class="shadow appearance-none border  hover:border-green-400 w-32 rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="name"
+                formControlName="name"
+                type="text"
+                placeholder="Enter Item name"
+                /> 
+             </div>
+        </div>
+        
+        <div class="">
+            <div class="flex flex-col">
+                <label class=" text-gray-700 font-bold mb-2 " for="name">
+                        Item Price 
+                </label>
+                <input
+                class="shadow appearance-none border  hover:border-green-400  rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="name"
+                formControlName="name"
+                type="text"
+                placeholder="Enter Item name"
+                /> 
+             </div>
+        </div>
+        
+
+        
+      </div>
+
+
+      <div class="flex items-center justify-center mb-1">
+        <button
+          class="bg-gray-900 text-white py-1 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
+          type="submit"
+        >
+          Total Bill
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
